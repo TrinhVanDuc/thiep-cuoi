@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Quản lý khách mời |
+        {{ wedding.groom }} & {{ wedding.bride }}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <section class="admin-page">
+        <a
+            href="{{ url_for('admin_logout') }}"
+            class="admin-logout-button"
+        >
+            ĐĂNG XUẤT
+        </a>
+
+        <p class="section-label">
+            WEDDING RSVP
+        </p>
+
+        <h1>
+            Danh sách khách mời
+        </h1>
+
+        <p class="admin-intro">
+            Quản lý những lời xác nhận
+            tham dự ngày cưới.
+        </p>
+
+
+        <!-- ==============================
+             THỐNG KÊ
+        =============================== -->
+
+        <div class="admin-stats">
+
+            <div class="admin-stat-card">
+
+                <span class="admin-stat-number">
+                    {{ total_guests }}
+                </span>
+
+                <span class="admin-stat-label">
+                    TỔNG PHẢN HỒI
+                </span>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <span class="admin-stat-number">
+                    {{ attending }}
+                </span>
+
+                <span class="admin-stat-label">
+                    SẼ THAM DỰ
+                </span>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <span class="admin-stat-number">
+                    {{ not_attending }}
+                </span>
+
+                <span class="admin-stat-label">
+                    KHÔNG THAM DỰ
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==============================
+             DANH SÁCH KHÁCH
+        =============================== -->
+
+        <div class="guest-list">
+
+            {% for guest in guests %}
+
+            <div class="guest-card">
+
+                <div class="guest-number">
+                    {{ loop.index }}
+                </div>
+
+                <div class="guest-content">
+
+                    <h3>
+                        {{ guest.name }}
+                    </h3>
+
+                    {% if guest.attendance == "yes" %}
+
+                    <span class="attendance yes">
+                        ✓ SẼ THAM DỰ
+                    </span>
+
+                    {% else %}
+
+                    <span class="attendance no">
+                        × KHÔNG THỂ THAM DỰ
+                    </span>
+
+                    {% endif %}
+
+                    {% if guest.message %}
+
+                    <p>
+                        "{{ guest.message }}"
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <div class="empty-guests">
+
+                <p>
+                    Chưa có khách mời nào
+                    gửi xác nhận.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <a
+            href="{{ url_for('home') }}"
+            class="back-button"
+        >
+            ← QUAY LẠI THIỆP CƯỚI
+        </a>
+
+    </section>
+
+</body>
+
+</html>

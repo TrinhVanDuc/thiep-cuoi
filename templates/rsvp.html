@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Xác nhận tham dự | {{ wedding.groom }} & {{ wedding.bride }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <section class="rsvp-page">
+
+        <p class="section-label">
+            RSVP
+        </p>
+
+        <h1>
+            Xác nhận tham dự
+        </h1>
+
+        <p class="rsvp-intro">
+            Sự hiện diện của bạn là niềm vui lớn
+            đối với chúng mình.
+        </p>
+        {% if success %}
+
+        <div class="success-message">
+
+            <span>✓</span>
+
+            <p class="success-title">
+                Cảm ơn bạn!
+            </p>
+
+            <p>
+                Xác nhận tham dự của bạn
+                đã được gửi thành công.
+            </p>
+
+            <p class="success-note">
+                Chúng mình rất mong được gặp bạn
+                trong ngày đặc biệt này ♥
+            </p>
+
+        </div>
+
+        {% endif %}
+
+        {% if not success %}
+
+        <!-- ==============================
+             FORM RSVP
+        =============================== -->
+
+        <form
+            action="/rsvp"
+            method="POST"
+            class="rsvp-form"
+        >
+
+            <div class="form-group">
+
+                <label for="name">
+                    HỌ VÀ TÊN
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Nhập họ và tên"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="attendance">
+                    BẠN SẼ THAM DỰ?
+                </label>
+
+                <select
+                    id="attendance"
+                    name="attendance"
+                    required
+                >
+
+                    <option value="">
+                        -- Vui lòng chọn --
+                    </option>
+
+                    <option value="yes">
+                        Có, mình sẽ tham dự ♥
+                    </option>
+
+                    <option value="no">
+                        Rất tiếc, mình không thể tham dự
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="message">
+                    LỜI NHẮN
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Gửi lời chúc đến cô dâu & chú rể..."
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="rsvp-button"
+            >
+                GỬI XÁC NHẬN
+            </button>
+
+        </form>
+
+        {% endif %}
+
+
+        <a
+            href="/"
+            class="back-button"
+        >
+            ← QUAY LẠI THIỆP CƯỚI
+        </a>
+
+    </section>
+
+</body>
+
+</html>
