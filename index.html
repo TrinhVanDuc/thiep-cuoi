@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ wedding.groom }} & {{ wedding.bride }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Google Fonts: Great Vibes & Dancing Script hỗ trợ tiếng Việt đầy đủ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Cấu hình hiển thị xem trước khi gửi link qua Zalo / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Thiệp Mời Cưới - Trịnh Đức & Thúy Hằng">
+    <meta property="og:description" content="Trân trọng kính mời bạn đến tham dự lễ cưới của chúng mình vào ngày 29.11.2026!">
+    <!-- Đường dẫn ảnh đại diện thiệp khi gửi link (ảnh background cưới) -->
+    <meta property="og:image" content="https://ten-mien-cua-ban.vercel.app/static/images/background.jpg">
+</head>
+
+<body>
+    <!-- MÀN MỞ ĐẦU: BAO THƯ NIÊM PHONG SÁP -->
+    <div class="envelope-overlay" id="envelopeOverlay">
+        <canvas id="particle-canvas"></canvas>
+
+        <div class="envelope-container">
+            <p class="envelope-subtitle">WEDDING INVITATION</p>
+            <h1 class="envelope-title">THIỆP MỜI CƯỚI</h1>
+
+            <div class="envelope-names">
+                <span>{{ wedding.groom }}</span>
+                <span class="and-symbol">&</span>
+                <span>{{ wedding.bride }}</span>
+            </div>
+
+            <div class="double-happiness-icon">囍</div>
+
+            <div class="envelope-box" id="envelopeBox">
+                <div class="envelope-flap"></div>
+                <div class="wax-seal">
+                    <div class="seal-inner">🌿</div>
+                </div>
+                <div class="envelope-card">
+                    <p>Trân trọng kính mời</p>
+                </div>
+                <div class="envelope-pocket"></div>
+            </div>
+
+            <p class="tap-instruction">Chạm để mở thiệp</p>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+        <!-- Nền mờ phía sau để xóa 2 dải đen -->
+        <div class="hero-blur-bg" style="background-image: url('/static/images/background.jpg');"></div>
+
+        <div class="hero-container">
+            <!-- Khung bọc ảnh chính -->
+            <div class="hero-image-wrapper">
+                <!-- Họa tiết hoa lá trang trí góc (SVG/Floral) -->
+                <div class="floral-corner top-left">🌸</div>
+                <div class="floral-corner top-right">🌸</div>
+
+                <img src="/static/images/background.jpg" alt="Trịnh Đức & Thúy Hằng" class="hero-img">
+            </div>
+
+            <!-- Thẻ nội dung thông tin thiệp -->
+            <div class="hero-text-card">
+                <!-- Chibi tượng trưng cho Mão (Mèo) & Tỵ (Rắn) -->
+                <div class="zodiac-mascots">
+                    <span class="mascot cat" title="Chú rể Kỷ Mão">🐱</span>
+                    <span class="heart-icon">💖</span>
+                    <span class="mascot snake" title="Cô dâu Tân Tỵ">🐍</span>
+                </div>
+
+                <p class="hero-subtitle">THE WEDDING OF</p>
+                <h1 class="hero-title">
+                    <span>Trịnh Đức</span>
+                    <span class="ampersand">&amp;</span>
+                    <span>Thúy Hằng</span>
+                </h1>
+                <div class="hero-divider"></div>
+                <p class="hero-date">29 . 11 . 2026</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- LỜI MỜI -->
+    <section class="invitation-section">
+        <div class="container text-center">
+            <p class="envelope-subtitle scroll-reveal reveal-down delay-1">SAVE THE DATE</p>
+            <h2 class="hero-title scroll-reveal reveal-up delay-2">Trân trọng kính mời</h2>
+            <p class="hero-desc scroll-reveal reveal-left delay-3">
+                Trân trọng kính mời bạn và người thương đến chung vui cùng chúng mình trong ngày trọng đại.
+            </p>
+        </div>
+    </section>
+
+    <!-- CALENDAR SECTION -->
+    <section class="wedding-calendar-section">
+        <div class="container text-center">
+            <div class="calendar-box scroll-reveal reveal-up delay-1">
+                <div class="calendar-header">
+                    <span class="calendar-title">Our wedding day</span>
+                    <span class="calendar-month">Tháng {{ wedding.month }}</span>
+                </div>
+
+                <div class="calendar-grid">
+                    <div class="day-name">CN</div>
+                    <div class="day-name">T2</div>
+                    <div class="day-name">T3</div>
+                    <div class="day-name">T4</div>
+                    <div class="day-name">T5</div>
+                    <div class="day-name">T6</div>
+                    <div class="day-name">T7</div>
+
+                    <div class="day-number">1</div>
+                    <div class="day-number">2</div>
+                    <div class="day-number">3</div>
+                    <div class="day-number">4</div>
+                    <div class="day-number">5</div>
+                    <div class="day-number">6</div>
+                    <div class="day-number">7</div>
+
+                    <div class="day-number">8</div>
+                    <div class="day-number">9</div>
+                    <div class="day-number">10</div>
+                    <div class="day-number">11</div>
+                    <div class="day-number">12</div>
+                    <div class="day-number">13</div>
+                    <div class="day-number">14</div>
+
+                    <div class="day-number">15</div>
+                    <div class="day-number">16</div>
+                    <div class="day-number">17</div>
+                    <div class="day-number">18</div>
+                    <div class="day-number">19</div>
+                    <div class="day-number wedding-day">
+                        <span>{{ wedding.day }}</span>
+                    </div>
+                    <div class="day-number">21</div>
+
+                    <div class="day-number">22</div>
+                    <div class="day-number">23</div>
+                    <div class="day-number">24</div>
+                    <div class="day-number">25</div>
+                    <div class="day-number">26</div>
+                    <div class="day-number">27</div>
+                    <div class="day-number">28</div>
+
+                    <div class="day-number">29</div>
+                    <div class="day-number">30</div>
+                    <div class="day-number">31</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: OUR LOVE STORY (EDITORIAL STYLE) -->
+    <section class="love-story-section">
+        <div class="story-container scroll-reveal reveal-up">
+            <!-- Nhãn phụ tạp chí -->
+            <p class="story-tag">OUR JOURNEY OF LOVE</p>
+
+            <h2 class="story-title">Chuyện Tình Yêu</h2>
+
+            <div class="story-line-decor"></div>
+
+            <!-- Đoạn văn bản căn chuẩn, chữ nhỏ thanh thoát -->
+            <div class="story-text-wrapper">
+                <p class="story-paragraph">
+                    Từ một cuộc gặp gỡ tình cờ, chúng mình đã cùng nhau đi qua những ngày tháng thật đẹp. Và giờ đây, chúng mình quyết định viết tiếp chương mới của cuộc đời bên nhau.
+                </p>
+            </div>
+
+            <!-- Các mốc điểm nhấn sống động -->
+            <div class="story-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-number">01</span>
+                    <span class="highlight-text">Gặp Gỡ</span>
+                </div>
+                <div class="highlight-dots">• • •</div>
+                <div class="highlight-item">
+                    <span class="highlight-number">02</span>
+                    <span class="highlight-text">Hẹn Hò</span>
+                </div>
+                <div class="highlight-dots">• • •</div>
+                <div class="highlight-item">
+                    <span class="highlight-number">03</span>
+                    <span class="highlight-text">Về Một Nhà</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ẢNH CÔ DÂU & CHÚ RỂ -->
+    <section class="couple-photo">
+        <img src="{{ url_for('static', filename='images/couple.jpg') }}" alt="{{ wedding.groom }} & {{ wedding.bride }}">
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <p class="section-subtitle">MEMORIES</p>
+            <h2 class="section-title">Our Moments</h2>
+
+            <div class="slideshow-container">
+                <div class="slideshow-track">
+                    <div class="slide"><img src="{{ url_for('static', filename='images/gallery-1.jpg') }}" alt="Khoảnh khắc 1"></div>
+                    <div class="slide"><img src="{{ url_for('static', filename='images/gallery-2.jpg') }}" alt="Khoảnh khắc 2"></div>
+                    <div class="slide"><img src="{{ url_for('static', filename='images/gallery-3.jpg') }}" alt="Khoảnh khắc 3"></div>
+                    <div class="slide"><img src="{{ url_for('static', filename='images/gallery-4.jpg') }}" alt="Khoảnh khắc 4"></div>
+                    <div class="slide"><img src="{{ url_for('static', filename='images/gallery-5.jpg') }}" alt="Khoảnh khắc 5"></div>
+                    <div class="slide"><img src="{{ url_for('static', filename='images/gallery-6.jpg') }}" alt="Khoảnh khắc 6"></div>
+                </div>
+
+                <button class="slide-btn prev-btn" id="prevSlide">&#10094;</button>
+                <button class="slide-btn next-btn" id="nextSlide">&#10095;</button>
+                <div class="slideshow-dots" id="slideDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THÔNG TIN ĐÁM CƯỚI -->
+    <section>
+        <h2>Wedding Day</h2>
+        <p>{{ wedding.day }}.{{ wedding.month }}.{{ wedding.year }}</p>
+        <p>{{ wedding.time }}</p>
+        <h3>{{ wedding.venue }}</h3>
+        <p>{{ wedding.address }}</p>
+
+        <!-- COUNTDOWN FIX -->
+        <div class="countdown" data-date="{{ wedding.year }}-{{ '%02d'|format(wedding.month|int) }}-{{ '%02d'|format(wedding.day|int) }}T{{ wedding.time if ':' in wedding.time else wedding.time + ':00' }}:00+07:00">
+            <div>
+                <span id="days">00</span>
+                <small>NGÀY</small>
+            </div>
+            <div>
+                <span id="hours">00</span>
+                <small>GIỜ</small>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <small>PHÚT</small>
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                <small>GIÂY</small>
+            </div>
+        </div>
+
+        <div class="venue-info">
+            <div class="venue-item">
+                <span class="venue-icon">◷</span>
+                <strong>{{ wedding.time }}</strong>
+                <small>THỜI GIAN</small>
+            </div>
+            <div class="venue-item">
+                <span class="venue-icon">⌖</span>
+                <strong>{{ wedding.venue }}</strong>
+                <small>ĐỊA ĐIỂM</small>
+            </div>
+            <div class="venue-item">
+                <span class="venue-icon">♡</span>
+                <strong>{{ wedding.address }}</strong>
+                <small>ĐỊA CHỈ</small>
+            </div>
+        </div>
+
+        <a href="{{ wedding.map_url }}" target="_blank" rel="noopener noreferrer" class="map-button">XEM GOOGLE MAPS</a>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps?q={{ wedding.address | urlencode }}&output=embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="rsvp-invitation">
+            <p class="section-label">WE WOULD LOVE TO SEE YOU</p>
+            <h3>Bạn sẽ đến chung vui cùng chúng mình chứ?</h3>
+            <p>Hãy dành một chút thời gian xác nhận sự tham dự của bạn nhé.</p>
+            <a href="{{ url_for('rsvp') }}" class="rsvp-main-button">XÁC NHẬN THAM DỰ</a>
+        </div>
+    </section>
+
+    <!-- MỪNG CƯỚI -->
+    <section class="gift-section" id="gift">
+        <div class="container">
+            <h2 class="section-title">{{ wedding.gift_info.title }}</h2>
+            <p class="gift-subtitle">{{ wedding.gift_info.subtitle }}</p>
+
+            <div class="gift-grid">
+                <div class="gift-card">
+                    <div class="gift-role">{{ wedding.gift_info.groom.role }}</div>
+                    <h3 class="gift-name">{{ wedding.gift_info.groom.name }}</h3>
+                    <div class="qr-box">
+                        <img src="{{ wedding.gift_info.groom.qr_image }}" alt="QR Chú rể" class="qr-code">
+                    </div>
+                    <div class="bank-info">
+                        <p><strong>Ngân hàng:</strong> {{ wedding.gift_info.groom.bank_name }}</p>
+                        <p><strong>STK:</strong> <span class="account-num">{{ wedding.gift_info.groom.account_number }}</span></p>
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-role">{{ wedding.gift_info.bride.role }}</div>
+                    <h3 class="gift-name">{{ wedding.gift_info.bride.name }}</h3>
+                    <div class="qr-box">
+                        <img src="{{ wedding.gift_info.bride.qr_image }}" alt="QR Cô dâu" class="qr-code">
+                    </div>
+                    <div class="bank-info">
+                        <p><strong>Ngân hàng:</strong> {{ wedding.gift_info.bride.bank_name }}</p>
+                        <p><strong>STK:</strong> <span class="account-num">{{ wedding.gift_info.bride.account_number }}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>{{ wedding.footer_message }}</p>
+    </footer>
+
+    <audio id="weddingMusic" loop>
+        <source src="{{ url_for('static', filename='music/wedding.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <button id="musicButton" class="music-button" type="button" aria-label="Bật nhạc">♫</button>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
