@@ -2690,3 +2690,101 @@ footer.show {
         letter-spacing: 1px;
     }
 }
+
+.wedding-form {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    font-size: 15px;
+    color: #4a4a4a;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.wedding-form input[type="text"],
+.wedding-form textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.wedding-form input[type="text"]:focus,
+.wedding-form textarea:focus {
+    border-color: #333;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Tùy chỉnh nút chọn Có/Không dạng thẻ bấm */
+.radio-tile-group {
+    display: flex;
+    gap: 12px;
+}
+
+.radio-tile {
+    flex: 1;
+    cursor: pointer;
+}
+
+.radio-tile input[type="radio"] {
+    display: none;
+}
+
+.radio-tile .tile-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fafafa;
+    font-size: 13px;
+    color: #555;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.radio-tile input[type="radio"]:checked + .tile-content {
+    border-color: #333;
+    background-color: #333;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Nút Gửi xác nhận sang trọng */
+.btn-wedding {
+    width: 100%;
+    padding: 14px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-wedding:hover {
+    background-color: #1a1a1a;
+}
+
+.btn-wedding:active {
+    transform: scale(0.99);
+}
