@@ -2790,11 +2790,11 @@ footer.show {
 }
 
 /* ==========================================
-   GIỚI THIỆU CÔ DÂU & CHÚ RỂ
+   GIỚI THIỆU CÔ DÂU & CHÚ RỂ - ENHANCED
    ========================================== */
 .couple-section {
-  max-width: 800px;
-  margin: 40px auto 20px;
+  max-width: 850px;
+  margin: 50px auto 30px;
   padding: 20px 15px;
   text-align: center;
   font-family: inherit;
@@ -2802,57 +2802,85 @@ footer.show {
 
 .couple-title {
   font-size: 14px;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: #8c6d58;
-  margin-bottom: 30px;
-  font-weight: 600;
+  margin-bottom: 40px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+/* Đường gạch trang trí dưới tiêu đề */
+.couple-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background-color: #8c6d58;
+  margin: 8px auto 0;
+  border-radius: 2px;
 }
 
 .couple-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  gap: 30px;
+  align-items: stretch;
+  gap: 35px;
   flex-wrap: wrap;
 }
 
+/* Thẻ nhân vật có hiệu ứng Fade In & Floating */
 .couple-card {
   flex: 1;
-  min-width: 260px;
-  max-width: 340px;
+  min-width: 280px;
+  max-width: 360px;
   background: #ffffff;
-  padding: 25px 20px;
-  border-radius: 16px;
+  padding: 30px 22px;
+  border-radius: 20px;
   border: 1px solid #f0e6df;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 30px rgba(140, 109, 88, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  /* Hiệu ứng xuát hiện nhẹ nhàng */
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .couple-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(140, 109, 88, 0.18);
+  border-color: #dcd1c8;
 }
 
+/* Khung ảnh hình vòm/oval giúp hiện trọn vẹn dung nhan */
 .avatar-wrapper {
-  width: 140px;
-  height: 140px;
-  margin: 0 auto 18px;
-  border-radius: 50%;
-  padding: 5px;
-  border: 2px dashed #8c6d58;
-  background-color: #fff;
+  width: 180px;
+  height: 220px;
+  margin: 0 auto 22px;
+  border-radius: 100px 100px 20px 20px; /* Kiểu dáng khung vòm sang trọng */
+  padding: 6px;
+  background: linear-gradient(135deg, #f0e6df 0%, #8c6d58 100%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease;
+}
+
+.couple-card:hover .avatar-wrapper {
+  transform: scale(1.03);
 }
 
 .couple-avatar {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 94px 94px 16px 16px;
   object-fit: cover;
+  object-position: top center; /* Ưu tiên canh lề đỉnh đầu để không bị mất mặt */
+  display: block;
 }
 
 .couple-role {
-  font-size: 13px;
-  letter-spacing: 2px;
+  font-size: 12px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: #8c6d58;
   margin-bottom: 6px;
@@ -2860,10 +2888,11 @@ footer.show {
 }
 
 .couple-name {
-  font-size: 22px;
-  font-weight: bold;
-  color: #333333;
-  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 14px;
+  font-family: 'Playfair Display', Georgia, serif; /* Nếu web dùng font nghệ thuật */
 }
 
 .couple-desc {
@@ -2873,12 +2902,24 @@ footer.show {
   margin: 0;
 }
 
-/* Responsive trên di động */
+/* Keyframes hiệu ứng xuất hiện */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive trên điện thoại */
 @media (max-width: 600px) {
   .couple-container {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
   }
   .couple-card {
     width: 100%;
