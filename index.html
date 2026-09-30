@@ -279,7 +279,30 @@
             <p>Hãy dành một chút thời gian xác nhận sự tham dự của bạn nhé.</p>
             <a href="#gift" class="rsvp-main-button">XÁC NHẬN THAM DỰ</a>
         </div>
-    </section>
+        <form id="rsvpForm" class="rsvp-form">
+            <div class="form-group">
+                <input type="text" id="guestName" placeholder="Họ và tên của bạn" required>
+            </div>
+    
+            <div class="form-group">
+                <select id="guestAttendance" required>
+                    <option value="Có, tôi sẽ đến">Sẽ đến tham dự</option>
+                    <option value="Rất tiếc không thể đến">Rất tiếc không thể đến</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <textarea id="guestMessage" placeholder="Lời chúc gửi tới Trịnh Đức & Thúy Hằng"></textarea>
+            </div>
+        
+            <button type="submit" id="btnSubmit">GỬI XÁC NHẬN</button>
+        </form>
+    
+        <!-- Thông báo sau khi gửi thành công -->
+        <div id="thankYouMessage" style="display: none; text-align: center; color: green; margin-top: 15px;">
+            Cảm ơn bạn đã gửi xác nhận và lời chúc! ❤️
+        </div>
+        </section>
 
     <!-- MỪNG CƯỚI -->
     <section class="gift-section" id="gift">
@@ -326,5 +349,46 @@
     <button id="musicButton" class="music-button" type="button" aria-label="Bật nhạc">♫</button>
 
     <script src="./static/js/main.js"></script>
+
+    <script>
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Chặn chuyển trang
+        
+        const btn = document.getElementById('btnSubmit');
+        btn.innerText = 'Đang gửi...';
+        btn.disabled = true;
+    
+        // 1. Thay ID Google Form của bạn vào đây
+        const FORM_ID = '1FAIpQLSc...'; 
+        const formUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+    
+        // 2. Lấy giá trị ô nhập
+        const name = document.getElementById('guestName').value;
+        const attendance = document.getElementById('guestAttendance').value;
+        const message = document.getElementById('guestMessage').value;
+    
+        // 3. Ghép vào đúng mã entry của bạn ở Bước 1
+        const formData = new FormData();
+        formData.append('entry.123456789', name);        // Thay entry ô Name
+        formData.append('entry.987654321', attendance);  // Thay entry ô Attendance
+        formData.append('entry.555555555', message);     // Thay entry ô Message
+    
+        // 4. Gửi dữ liệu đi
+        fetch(formUrl, {
+            method: 'POST',
+            mode: 'no-cors', // Bắt buộc dùng no-cors cho Google Forms
+            body: formData
+        }).then(() => {
+            // Hiện thông báo thành công & ẩn form
+            document.getElementById('rsvpForm').reset();
+            document.getElementById('rsvpForm').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+        }).catch(error => {
+            alert('Có lỗi xảy ra, vui lòng thử lại sau!');
+            btn.innerText = 'GỬI XÁC NHẬN';
+            btn.disabled = false;
+        });
+    });
+    </script>
 </body>
 </html>
