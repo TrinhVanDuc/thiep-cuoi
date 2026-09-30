@@ -352,38 +352,41 @@
 
     <script>
     document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Chặn chuyển trang
+        e.preventDefault(); // Chặn reload trang
         
         const btn = document.getElementById('btnSubmit');
         btn.innerText = 'Đang gửi...';
         btn.disabled = true;
-    
-        // Đường dẫn nhận dữ liệu Google Form của bạn
+
+        // Đường dẫn Google Form
         const FORM_ID = '1FAIpQLSfMULUPTZT-agwkSXx5fhI9UOURirpOEYW1sugWIOfSFNz82w'; 
         const formUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
-    
-        // Lấy giá trị khách nhập từ Form HTML
+
+        // Lấy giá trị khách nhập
         const name = document.getElementById('guestName').value;
         const attendance = document.getElementById('guestAttendance').value;
         const message = document.getElementById('guestMessage').value;
-    
-        // Gán dữ liệu vào đúng các trường entry tương ứng
-        const formData = new FormData();
+
+        // Chuyển dữ liệu sang chuẩn application/x-www-form-urlencoded
+        const formData = new URLSearchParams();
         formData.append('entry.1679970979', name);        // Họ và tên
         formData.append('entry.147494649', attendance);   // Tham dự
         formData.append('entry.547125877', message);      // Lời chúc
-    
+
         // Gửi dữ liệu ngầm bằng Fetch API
         fetch(formUrl, {
             method: 'POST',
-            mode: 'no-cors', // Bắt buộc dùng no-cors để gửi dữ liệu về Google Forms
-            body: formData
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData.toString()
         }).then(() => {
-            // Xử lý sau khi gửi thành công
-            document.getElementById('rsvpForm').reset();
+            // Hiển thị thông báo thành công
             document.getElementById('rsvpForm').style.display = 'none';
             document.getElementById('thankYouMessage').style.display = 'block';
         }).catch(error => {
+            console.error('Error:', error);
             alert('Có lỗi xảy ra, vui lòng thử lại sau!');
             btn.innerText = 'GỬI XÁC NHẬN';
             btn.disabled = false;
