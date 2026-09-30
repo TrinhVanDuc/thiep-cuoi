@@ -358,28 +358,28 @@
         btn.innerText = 'Đang gửi...';
         btn.disabled = true;
     
-        // 1. Thay ID Google Form của bạn vào đây
-        const FORM_ID = '1FAIpQLSc...'; 
+        // Đường dẫn nhận dữ liệu Google Form của bạn
+        const FORM_ID = '1FAIpQLSfMULUPTZT-agwkSXx5fhI9UOURirpOEYW1sugWIOfSFNz82w'; 
         const formUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
     
-        // 2. Lấy giá trị ô nhập
+        // Lấy giá trị khách nhập từ Form HTML
         const name = document.getElementById('guestName').value;
         const attendance = document.getElementById('guestAttendance').value;
         const message = document.getElementById('guestMessage').value;
     
-        // 3. Ghép vào đúng mã entry của bạn ở Bước 1
+        // Gán dữ liệu vào đúng các trường entry tương ứng
         const formData = new FormData();
-        formData.append('entry.123456789', name);        // Thay entry ô Name
-        formData.append('entry.987654321', attendance);  // Thay entry ô Attendance
-        formData.append('entry.555555555', message);     // Thay entry ô Message
+        formData.append('entry.1679970979', name);        // Họ và tên
+        formData.append('entry.147494649', attendance);   // Tham dự
+        formData.append('entry.547125877', message);      // Lời chúc
     
-        // 4. Gửi dữ liệu đi
+        // Gửi dữ liệu ngầm bằng Fetch API
         fetch(formUrl, {
             method: 'POST',
-            mode: 'no-cors', // Bắt buộc dùng no-cors cho Google Forms
+            mode: 'no-cors', // Bắt buộc dùng no-cors để gửi dữ liệu về Google Forms
             body: formData
         }).then(() => {
-            // Hiện thông báo thành công & ẩn form
+            // Xử lý sau khi gửi thành công
             document.getElementById('rsvpForm').reset();
             document.getElementById('rsvpForm').style.display = 'none';
             document.getElementById('thankYouMessage').style.display = 'block';
