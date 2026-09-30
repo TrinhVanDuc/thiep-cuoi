@@ -2788,3 +2788,99 @@ footer.show {
 .btn-wedding:active {
     transform: scale(0.99);
 }
+
+/* ==========================================
+   GIỚI THIỆU CÔ DÂU & CHÚ RỂ
+   ========================================== */
+.couple-section {
+  max-width: 800px;
+  margin: 40px auto 20px;
+  padding: 20px 15px;
+  text-align: center;
+  font-family: inherit;
+}
+
+.couple-title {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8c6d58;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.couple-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.couple-card {
+  flex: 1;
+  min-width: 260px;
+  max-width: 340px;
+  background: #ffffff;
+  padding: 25px 20px;
+  border-radius: 16px;
+  border: 1px solid #f0e6df;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
+}
+
+.couple-card:hover {
+  transform: translateY(-5px);
+}
+
+.avatar-wrapper {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px dashed #8c6d58;
+  background-color: #fff;
+}
+
+.couple-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.couple-role {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8c6d58;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.couple-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
+.couple-desc {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive trên di động */
+@media (max-width: 600px) {
+  .couple-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .couple-card {
+    width: 100%;
+  }
+}
