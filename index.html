@@ -426,5 +426,45 @@
         });
     });
     </script>
+    <!-- HIỆU ỨNG TRÁI TIM RƠI -->
+    <div id="heart-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden;"></div>
+    
+    <script>
+    function createHeart() {
+      const container = document.getElementById('heart-container');
+      if (!container) return;
+    
+      const heart = document.createElement('div');
+      heart.classList.add('falling-heart');
+      
+      // Danh sách các biểu tượng trái tim đỏ/hồng ngọt ngào
+      const hearts = ['❤️', '💖', '💕', '💗', '❣️'];
+      heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+    
+      // Kích thước ngẫu nhiên (12px - 24px)
+      const size = Math.random() * 12 + 12;
+      heart.style.fontSize = `${size}px`;
+    
+      // Vị trí xuất hiện ngẫu nhiên theo chiều ngang (0% - 100%)
+      heart.style.left = `${Math.random() * 100}vw`;
+    
+      // Thời gian rơi ngẫu nhiên (4s - 8s)
+      const duration = Math.random() * 4 + 4;
+      heart.style.animationDuration = `${duration}s`;
+    
+      // Độ mờ ngẫu nhiên
+      heart.style.opacity = Math.random() * 0.5 + 0.5;
+    
+      container.appendChild(heart);
+    
+      // Tự động xóa trái tim sau khi rơi xong để giải phóng bộ nhớ
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+    
+    // Tạo trái tim mới mỗi 400ms (khoảng 2.5 trái tim/giây)
+    setInterval(createHeart, 400);
+</script>
 </body>
 </html>
