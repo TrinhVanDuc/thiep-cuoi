@@ -2727,3 +2727,39 @@ footer.show {
     display: none; /* Ẩn bớt gạch nối trên điện thoại nhỏ để tránh tràn màn hình */
   }
 }
+/* ==========================================
+   HIỆU ỨNG TRÁI TIM RƠI (FALLING HEARTS)
+   ========================================== */
+.falling-heart {
+  position: absolute;
+  top: -30px;
+  user-select: none;
+  pointer-events: none;
+  animation: heartFall linear forwards;
+  filter: drop-shadow(0 2px 4px rgba(255, 0, 0, 0.2));
+}
+
+@keyframes heartFall {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  50% {
+    /* Tạo nhịp đung đưa nhẹ sang trái/phải khi rơi */
+    transform: translateY(50vh) rotate(180deg) translateX(25px) scale(1.1);
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg) translateX(-25px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+/* Tối ưu cho di động: Giảm bớt mật độ rơi để không làm rối mắt */
+@media (max-width: 600px) {
+  .falling-heart {
+    font-size: 14px !important;
+  }
+}
