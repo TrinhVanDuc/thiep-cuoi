@@ -1460,306 +1460,7 @@ footer.show {
 
 }
 
-/* ==========================================
-   TRANG ĐĂNG NHẬP QUẢN TRỊ
-========================================== */
 
-.admin-login-page {
-    min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 40px 20px;
-
-    text-align: center;
-
-    opacity: 1 !important;
-    transform: none !important;
-
-    background: #f8f5f0;
-}
-
-.admin-login-page h1 {
-    margin: 10px 0 15px;
-
-    color: #2f2a26;
-
-    font-size: 42px;
-}
-
-.admin-login-intro {
-    margin-bottom: 30px;
-
-    color: #6f665f;
-}
-
-.admin-login-form {
-    width: 100%;
-    max-width: 420px;
-
-    padding: 30px;
-
-    background: #ffffff;
-
-    border: 1px solid #e5ddd4;
-}
-
-.admin-login-form .form-group {
-    margin-bottom: 20px;
-
-    text-align: left;
-}
-
-.admin-login-form label {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: #5d554f;
-
-    font-size: 12px;
-    letter-spacing: 0.12em;
-}
-
-.admin-login-form input {
-    width: 100%;
-
-    box-sizing: border-box;
-
-    padding: 14px 15px;
-
-    border: 1px solid #d8d0c8;
-
-    background: #fff;
-
-    color: #2f2a26;
-
-    font-size: 16px;
-}
-
-.admin-login-form input:focus {
-    outline: none;
-
-    border-color: #8b7665;
-}
-
-.login-error {
-    margin: 0 0 20px;
-
-    color: #a33a3a;
-
-    font-size: 14px;
-}
-
-.admin-login-form .rsvp-button {
-    width: 100%;
-}
-
-.admin-login-page .back-button {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    color: #6f665f;
-
-    text-decoration: none;
-
-    font-size: 13px;
-    letter-spacing: 0.08em;
-}
-
-/* ==========================================
-   THỐNG KÊ TRANG QUẢN TRỊ
-========================================== */
-
-.admin-stats {
-    width: 100%;
-    max-width: 900px;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-
-    margin: 35px auto;
-}
-
-.admin-stat-card {
-    padding: 28px 20px;
-
-    background: #ffffff;
-
-    border: 1px solid #e5ddd4;
-
-    text-align: center;
-}
-
-.admin-stat-number {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: #2f2a26;
-
-    font-size: 36px;
-    font-weight: 500;
-}
-
-.admin-stat-label {
-    display: block;
-
-    color: #8b7665;
-
-    font-size: 11px;
-    letter-spacing: 0.12em;
-}
-
-
-/* ==========================================
-   MOBILE
-========================================== */
-
-@media (max-width: 600px) {
-
-    .admin-stats {
-        grid-template-columns: 1fr;
-
-        gap: 12px;
-
-        margin: 25px auto;
-    }
-
-    .admin-stat-card {
-        padding: 20px;
-    }
-
-    .admin-stat-number {
-        font-size: 30px;
-    }
-
-}
-
-/* ==========================================
-   DANH SÁCH KHÁCH MỜI
-========================================== */
-
-.guest-card {
-    width: 100%;
-    max-width: 900px;
-
-    display: flex;
-    gap: 20px;
-
-    box-sizing: border-box;
-
-    margin: 0 auto 15px;
-    padding: 22px 24px;
-
-    background: #ffffff;
-
-    border: 1px solid #e5ddd4;
-}
-
-.guest-number {
-    flex-shrink: 0;
-
-    width: 36px;
-    height: 36px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid #d8cec4;
-
-    color: #8b7665;
-
-    font-size: 13px;
-}
-
-.guest-content {
-    flex: 1;
-}
-
-.guest-content h3 {
-    margin: 0 0 10px;
-
-    color: #2f2a26;
-
-    font-size: 19px;
-    font-weight: 500;
-}
-
-.attendance {
-    display: inline-block;
-
-    margin-bottom: 10px;
-
-    font-size: 11px;
-    letter-spacing: 0.08em;
-}
-
-.attendance.yes {
-    color: #6f8068;
-}
-
-.attendance.no {
-    color: #9a7770;
-}
-
-.guest-content p {
-    margin: 5px 0 0;
-
-    color: #6f665f;
-
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.empty-guests {
-    width: 100%;
-    max-width: 900px;
-
-    box-sizing: border-box;
-
-    margin: 0 auto;
-
-    padding: 40px 20px;
-
-    border: 1px dashed #d8cec4;
-
-    text-align: center;
-
-    color: #8b8178;
-}
-
-
-/* ==========================================
-   MOBILE
-========================================== */
-
-@media (max-width: 600px) {
-
-    .guest-card {
-        gap: 14px;
-
-        padding: 18px;
-    }
-
-    .guest-number {
-        width: 32px;
-        height: 32px;
-    }
-
-    .guest-content h3 {
-        font-size: 17px;
-    }
-
-}
 
 /* ==========================================
    HERO - PHẦN MỞ ĐẦU
@@ -2564,30 +2265,6 @@ footer.show {
     text-align: center;
 }
 
-/* =====================================================
-   LOVE STORY - EDITORIAL & TIMELINE STYLE
-   ===================================================== */
-
-.love-story-section {
-    padding: 90px 20px;
-    background: #faf7f2; /* Màu nền giấy kem cao cấp */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.story-container {
-    max-width: 680px;
-    width: 100%;
-    background: #ffffff;
-    padding: 60px 45px;
-    border-radius: 4px; /* Bo góc nhẹ kiểu khung tranh */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e8e2d8;
-    text-align: center;
-}
-
 /* Tag phụ nhỏ nhắn */
 .story-tag {
     font-size: 10px;
@@ -2923,5 +2600,130 @@ footer.show {
   }
   .couple-card {
     width: 100%;
+  }
+}
+/* ==========================================
+   OUR LOVE STORY - EDITORIAL STYLE
+   ========================================== */
+.love-story-section {
+  padding: 60px 20px;
+  background-color: #faf8f5;
+  text-align: center;
+}
+
+.story-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  background: #ffffff;
+  border: 1px solid #f0e6df;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(140, 109, 88, 0.05);
+}
+
+/* Sub-title nhỏ xinh tinh tế */
+.story-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #8c6d58;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Tiêu đề chính nổi bật */
+.story-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin: 0 0 16px 0;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Đường kẻ phân cách nghệ thuật */
+.story-line-decor {
+  width: 40px;
+  height: 2px;
+  background-color: #8c6d58;
+  margin: 0 auto 24px;
+  border-radius: 2px;
+}
+
+/* Đoạn trích dẫn lời tự sự */
+.story-text-wrapper {
+  margin-bottom: 35px;
+}
+
+.story-quote {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555555;
+  font-style: italic;
+  font-family: Georgia, serif;
+  margin: 0;
+  padding: 0 10px;
+}
+
+/* Khối mốc hành trình 01 - 02 - 03 */
+.story-highlights {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 25px;
+  border-top: 1px dashed #e5d8ce;
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 75px;
+}
+
+.highlight-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #8c6d58;
+  font-family: 'Playfair Display', Georgia, serif;
+  line-height: 1.2;
+}
+
+.highlight-text {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #666666;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.highlight-dots {
+  color: #d0c0b4;
+  font-size: 12px;
+  letter-spacing: -1px;
+  user-select: none;
+}
+
+/* Responsive di động */
+@media (max-width: 500px) {
+  .story-container {
+    padding: 30px 18px;
+  }
+  .story-title {
+    font-size: 26px;
+  }
+  .story-quote {
+    font-size: 14.5px;
+  }
+  .highlight-number {
+    font-size: 18px;
+  }
+  .highlight-text {
+    font-size: 11px;
+  }
+  .highlight-dots {
+    display: none; /* Ẩn bớt gạch nối trên điện thoại nhỏ để tránh tràn màn hình */
   }
 }
