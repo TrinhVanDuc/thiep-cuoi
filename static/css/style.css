@@ -2603,190 +2603,217 @@ footer.show {
   }
 }
 /* ==========================================
-   OUR LOVE STORY - ANIMATED EDITORIAL
-   ========================================== */
+   OUR LOVE STORY - LÃNG MẠN
+========================================== */
+
 .love-story-section {
-  padding: 60px 20px;
-  background-color: #faf8f5;
-  text-align: center;
-  overflow: hidden;
+    position: relative;
+
+    padding: 120px 10%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(201, 177, 140, 0.10),
+            transparent 60%
+        ),
+        #ffffff;
+
+    overflow: hidden;
 }
 
-.story-container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 45px 30px;
-  background: #ffffff;
-  border: 1px solid #f0e6df;
-  border-radius: 20px;
-  box-shadow: 0 12px 35px rgba(140, 109, 88, 0.06);
-  position: relative;
+.love-story-inner {
+    position: relative;
+
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    text-align: center;
 }
 
-/* HIỆU ỨNG CHỮ XUẤT HIỆN (ANIMATION) */
-.animated-text {
-  opacity: 0;
-  transform: translateY(25px);
-  animation: storyFadeUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+/* OUR LOVE STORY */
+
+.love-story-label {
+    margin-bottom: 18px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+    letter-spacing: 6px;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: loveStoryFadeUp 1s ease forwards;
 }
 
-/* Cài đặt độ trễ (delay) cho từng phần xuất hiện nối tiếp nhau */
-.story-tag.animated-text { animation-delay: 0.1s; }
-.story-title.animated-text { animation-delay: 0.25s; }
-.story-line-decor.animated-text { animation-delay: 0.4s; }
-.story-text-wrapper.animated-text { animation-delay: 0.55s; }
-.story-timeline.animated-text { animation-delay: 0.7s; }
+/* Đường trang trí */
 
-@keyframes storyFadeUp {
-  from {
+.love-story-line {
+    width: 0;
+    height: 1px;
+
+    margin: 0 auto 35px;
+
+    background: var(--gold);
+
+    opacity: 0.6;
+
+    animation: loveStoryLine 1.2s ease 0.5s forwards;
+}
+
+/* Tiêu đề */
+
+.love-story-title {
+    margin-bottom: 40px;
+
+    color: var(--text);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(38px, 6vw, 60px);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
     opacity: 0;
     transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+    animation:
+        loveStoryFadeUp 1s ease 0.7s forwards;
 }
 
-/* TRANG TRÍ TYPOGRAPHY */
-.story-tag {
-  display: inline-block;
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: #8c6d58;
-  font-weight: 700;
-  margin-bottom: 10px;
+/* Nội dung */
+
+.love-story-text {
+    max-width: 650px;
+
+    margin: 0 auto 24px;
+
+    color: var(--text-light);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 17px;
+
+    line-height: 2.15;
+
+    letter-spacing: 0.02em;
+
+    opacity: 0;
+    transform: translateY(25px);
 }
 
-.story-title {
-  font-size: 34px;
-  font-weight: 700;
-  color: #2a2a2a;
-  margin: 0 0 16px 0;
-  font-family: 'Playfair Display', Georgia, serif;
+.love-story-text:nth-of-type(1) {
+    animation:
+        loveStoryFadeUp 1s ease 1s forwards;
 }
 
-.story-line-decor {
-  width: 45px;
-  height: 2px;
-  background-color: #8c6d58;
-  margin: 0 auto 28px;
-  border-radius: 2px;
+.love-story-text:nth-of-type(2) {
+    animation:
+        loveStoryFadeUp 1s ease 1.4s forwards;
 }
 
-.story-quote {
-  font-size: 16.5px;
-  line-height: 1.85;
-  color: #4a4a4a;
-  font-style: italic;
-  font-family: Georgia, serif;
-  margin: 0 0 35px 0;
-  padding: 0 15px;
-  position: relative;
-}
+/* Trái tim cuối */
 
-/* KHỐI TIMELINE SINH ĐỘNG */
-.story-timeline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding-top: 25px;
-  border-top: 1px dashed #e8ded6;
-}
+.love-story-symbol {
+    margin-top: 38px;
 
-.timeline-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 70px;
-}
+    color: var(--gold);
 
-.step-badge {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: #f7f3ef;
-  border: 1px solid #dcd1c8;
-  color: #8c6d58;
-  font-weight: 700;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 6px;
-  transition: all 0.3s ease;
-}
+    font-family: Georgia, serif;
 
-.step-badge.highlight {
-  background-color: #8c6d58;
-  color: #ffffff;
-  border-color: #8c6d58;
-  box-shadow: 0 4px 12px rgba(140, 109, 88, 0.3);
-}
-
-.step-label {
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #666666;
-  font-weight: 600;
-}
-
-.step-label.highlight-text {
-  color: #8c6d58;
-  font-weight: 700;
-}
-
-.timeline-connector {
-  flex: 1;
-  max-width: 60px;
-  height: 1px;
-  background: #e8ded6;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pulse-heart {
-  font-size: 11px;
-  background: #ffffff;
-  padding: 0 4px;
-  animation: heartPulse 1.5s infinite ease-in-out;
-}
-
-@keyframes heartPulse {
-  0% { transform: scale(0.9); }
-  50% { transform: scale(1.3); }
-  100% { transform: scale(0.9); }
-}
-
-/* RESPONSIVE TRÊN ĐIỆN THOẠI */
-@media (max-width: 500px) {
-  .story-container {
-    padding: 30px 18px;
-  }
-  .story-title {
     font-size: 28px;
-  }
-  .story-quote {
-    font-size: 15px;
-    line-height: 1.75;
-    padding: 0;
-  }
-  .timeline-connector {
-    max-width: 35px;
-  }
-  .step-badge {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-  }
-  .step-label {
-    font-size: 11px;
-  }
+
+    opacity: 0;
+
+    transform: scale(0.5);
+
+    animation:
+        loveStoryHeart 1s ease 1.9s forwards;
+}
+
+
+/* ==========================================
+   ANIMATION
+========================================== */
+
+@keyframes loveStoryFadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes loveStoryLine {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 70px;
+    }
+
+}
+
+
+@keyframes loveStoryHeart {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .love-story-section {
+        padding: 90px 25px;
+    }
+
+    .love-story-title {
+        font-size: 40px;
+        margin-bottom: 32px;
+    }
+
+    .love-story-text {
+        font-size: 15px;
+        line-height: 2;
+    }
+
 }
 /* ==========================================
    HIỆU ỨNG TRÁI TIM RƠI (FALLING HEARTS)
