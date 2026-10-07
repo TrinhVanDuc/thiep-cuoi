@@ -2851,3 +2851,72 @@ footer.show {
     font-size: 14px !important;
   }
 }
+
+/* Container chứa toàn bộ ảnh */
+.slideshow-container {
+    position: relative;
+    max-width: 800px;
+    height: 500px; /* Chiều cao cố định của khung ảnh */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.slideshow-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Mặc định ẩn tất cả các slide */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+/* Chỉ hiển thị slide có class active */
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* CSS cho Dots (Chấm tròn chuyển ảnh) */
+.slideshow-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ffffff;
+    transform: scale(1.3);
+    width: 22px;
+    border-radius: 10px;
+}
