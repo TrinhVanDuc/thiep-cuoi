@@ -2602,36 +2602,6 @@ footer.show {
     width: 100%;
   }
 }
-/* ==========================================
-   OUR LOVE STORY - LÃNG MẠN
-========================================== */
-
-.love-story-section {
-    position: relative;
-
-    padding: 120px 10%;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(201, 177, 140, 0.10),
-            transparent 60%
-        ),
-        #ffffff;
-
-    overflow: hidden;
-}
-
-.love-story-inner {
-    position: relative;
-
-    max-width: 720px;
-
-    margin: 0 auto;
-
-    text-align: center;
-}
-
 /* OUR LOVE STORY */
 
 .love-story-label {
@@ -2740,7 +2710,6 @@ footer.show {
     animation:
         loveStoryHeart 1s ease 1.9s forwards;
 }
-
 
 /* ==========================================
    ANIMATION
@@ -2852,71 +2821,152 @@ footer.show {
   }
 }
 
-/* Container chứa toàn bộ ảnh */
+/* ==========================================
+   GALLERY SLIDESHOW - PROFESSIONAL CROSS-FADE
+   ========================================== */
 .slideshow-container {
-    position: relative;
-    max-width: 800px;
-    height: 500px; /* Chiều cao cố định của khung ảnh */
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  max-width: 850px;
+  /* Dùng aspectRatio thay vì height cố định để ảnh giữ nguyên tỉ lệ đẹp trên cả PC & Mobile */
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  background-color: #1a1a1a; /* Nền tối nhẹ giúp ảnh chuyển mượt không bị lóe trắng */
 }
 
 .slideshow-track {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-/* Mặc định ẩn tất cả các slide */
 .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.03); /* Phóng nhẹ 3% để tạo hiệu ứng Zoom nhẹ khi xuất hiện */
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  will-change: opacity, transform; /* Tối ưu card màn hình (GPU Acceleration) chống giật */
 }
 
-/* Chỉ hiển thị slide có class active */
 .slide.active {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  transform: scale(1); /* Trở về kích thước chuẩn */
+  pointer-events: auto;
+  z-index: 2;
 }
 
 .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+  width: 100%;
+  height: 100%;
+  /* Hiển thị trọn vẹn khung hình không bị mất chi tiết */
+  object-fit: contain; 
+  background-color: #f7f5f0; /* Nền kem trùng tông thiệp nếu ảnh ngắn hơn khung */
+  display: block;
 }
 
-/* CSS cho Dots (Chấm tròn chuyển ảnh) */
+/* Nút bấm Prev/Next nổi bật và mượt */
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(140, 109, 88, 0.2);
+  color: #2c2c2c;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.slide-btn:hover {
+  background: #ffffff;
+  color: #8c6d58;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn { left: 16px; }
+.next-btn { right: 16px; }
+
+/* Dots indicator tinh tế */
 .slideshow-dots {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dot.active {
-    background-color: #ffffff;
-    transform: scale(1.3);
-    width: 22px;
-    border-radius: 10px;
+  background-color: #ffffff;
+  width: 20px;
+  border-radius: 10px;
 }
+
+/* Responsive Mobile */
+@media (max-width: 600px) {
+  .slideshow-container {
+    aspect-ratio: 3 / 4; /* Chuyển tỉ lệ dọc phù hợp màn hình điện thoại */
+    border-radius: 12px;
+  }
+  .slide-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  .prev-btn { left: 8px; }
+  .next-btn { right: 8px; }
+}
+
+/* ==========================================
+   SCROLL REVEAL ANIMATIONS (HIỆU ỨNG CUỘN TRANG)
+   ========================================== */
+/* Trạng thái mặc định trước khi cuộn tới */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+/* Trạng thái khi đã cuộn tới vị trí quan sát */
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Tùy chọn hiệu ứng xuất hiện nối tiếp cho các thẻ con (Stagger effect) */
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
