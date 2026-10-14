@@ -167,33 +167,46 @@ if (canvas) {
     animateParticles();
 }
 
-// 5. XỬ LÝ SLIDESHOW ẢNH
-const slides = document.querySelectorAll('.slide');
-const prevBtn = document.getElementById('prevSlide');
-const nextBtn = document.getElementById('nextSlide');
-const dotsContainer = document.getElementById('slideDots');
+// 5. XỬ LÝ SLIDESHOW ẢNH (OPTIMIZED FOR SMOOTHNESS)
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    const dotsContainer = document.getElementById('slideDots');
 
-if (slides.length > 0) {
+    if (slides.length === 0) return;
+
     let currentIndex = 0;
     let autoSlideTimer = null;
 
-    slides.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        if (dotsContainer) dotsContainer.appendChild(dot);
-    });
+    // Tạo Dots tự động theo đúng số lượng 12 ảnh
+    if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+    }
 
     const dots = document.querySelectorAll('.dot');
 
     function updateSlideshow() {
-        slides.forEach((slide, index) => {
-            slide.classList.toggle('active', index === currentIndex);
-        });
+        // Sử dụng requestAnimationFrame để đồng bộ tốc độ làm tươi màn hình (tránh bị giật)
+        requestAnimationFrame(() => {
+            slides.forEach((slide, index) => {
+                if (index === currentIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
 
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
         });
     }
 
@@ -227,7 +240,7 @@ if (slides.length > 0) {
 
     updateSlideshow();
     startAutoSlide();
-}
+});
 
 // 6. XỬ LÝ TƯƠNG TÁC MỞ BAO THƯ & SCROLL REVEAL
 document.addEventListener('DOMContentLoaded', function () {
@@ -272,4 +285,31 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 1000);
         });
     }
+});
+
+// HIỆU ỨNG CUỘN TRANG XUẤT HIỆN (SCROLL REVEAL)
+document.addEventListener('DOMContentLoaded', () => {
+    // Tự động tìm các phần tử chính hoặc có lớp .reveal-on-scroll
+    const revealElements = document.querySelectorAll(
+        '.reveal-on-scroll, section, .love-story-card, .slideshow-container, .map-container, .couple-card'
+    );
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Bỏ observer sau khi đã xuất hiện để tiết kiệm tài nguyên
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.15, // Hiển thị khi 15% phần tử đi vào màn hình
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => {
+        el.classList.add('reveal-on-scroll');
+        revealObserver.observe(el);
+    });
 });
